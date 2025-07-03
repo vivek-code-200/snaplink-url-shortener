@@ -77,7 +77,7 @@ const Page = () => {
             <div className='container flex xl:flex-row flex-col gap-8 lg:justify-center text-gray-500 mx-auto md:px-20 my-10 p-4 lg:w-[70vw] min-h-[55vh] border-y-1 border-gray-500 rounded-2xl'>
                 <div className='box1 xl:w-[25vw] lg:h-full p-4 border-0 border-gray-600 bg-[rgba(255,0,183,0.04)] rounded-2xl'>
                     <h3 className='text-gray-200 text-xl  '>Contact Information</h3>
-                    <p className=' mt-2'>Use our contact form for all Information and Requests , And We'll get back to you as soon as possible. We look forward to connecting...</p>
+                    <p className=' mt-2'>Use our contact form for all Information and Requests , And We&apos;ll get back to you as soon as possible. We look forward to connecting...</p>
                     <p className='my-2 text-center'>OR</p>
                     <p className='border-b-1 pb-3'>Contact us directly via contact Information below:</p>
 
