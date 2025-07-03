@@ -30,7 +30,7 @@ export default function Home() {
 
       <div className="survey mt-20">
         <h1 className="text-2xl font-bold md:mx-28 mx-5 border-b-[1px] border-gray-500 text-center">Primary Research</h1>
-        <p className="text-gray-500 md:mx-28 mx-5 mt-8  text-center ">To gain valuable insights into user needs and preferences, we conducted a comprehensive survey. This survey alllowed us to collect feedback from a diverse group of respondents about their challenges with link management and expectations from a URL shortener. The data gathered helped shape SnapLink's features, ensuring the platform addresses real world problems while offering a seamless user experience.</p>
+        <p className="text-gray-500 md:mx-28 mx-5 mt-8  text-center ">To gain valuable insights into user needs and preferences, we conducted a comprehensive survey. This survey alllowed us to collect feedback from a diverse group of respondents about their challenges with link management and expectations from a URL shortener. The data gathered helped shape SnapLink&apos;s features, ensuring the platform addresses real world problems while offering a seamless user experience.</p>
 
         <div className="ques md:p-10 p-7 m-10 md:w-[55vw] md:mx-auto mx-3  border-2 rounded-lg border-gray-500">
           <div>
@@ -43,7 +43,7 @@ export default function Home() {
           </div>
           <div className="mt-5">
             <h2 className="text-white">Q3: How do you currently track the performace of your shared links?</h2>
-            <p className="text-gray-500 text-[15px] py-3 border-b-2">ANS: I primarily used Google Analytics, but it's difficult to tie specific links to compaign without proper tagging or dedicated tools. Having a built-in analytics feature in the URL shortener would simplify the process and save time.</p>
+            <p className="text-gray-500 text-[15px] py-3 border-b-2">ANS: I primarily used Google Analytics, but it&apos;s difficult to tie specific links to compaign without proper tagging or dedicated tools. Having a built-in analytics feature in the URL shortener would simplify the process and save time.</p>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 
-export default function page() {
+export default function Page() {
     const [url, seturl] = useState("")
     const [shorturl, setshorturl] = useState("")
     const [generated, setgenerated] = useState("")

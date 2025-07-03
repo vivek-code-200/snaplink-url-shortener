@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 
-const page = () => {
+const Page = () => {
 
     const [urls, seturls] = useState([])
 
@@ -131,4 +131,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 
-const page = () => {
+const Page = () => {
 
     const [contactform, setcontactform] = useState({ name:"",email:"",subject:"", message: "" })
 
@@ -120,4 +120,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

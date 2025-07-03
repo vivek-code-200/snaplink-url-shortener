@@ -48,55 +48,55 @@ const page = () => {
 
             <div className='Testimonials md:w-[75vw] mx-auto'>
                 <h2 className='text-3xl text-center text-white border-b-2 pb-2 border-gray-500'>Testimonials</h2>
-                <p className='text-xl mt-8 text-gray-400 text-center'>"Don't Take Our Word for it"</p>
+                <p className='text-xl mt-8 text-gray-400 text-center'>&quot;Don&apos;t Take Our Word for it&quot;</p>
                 <p className='text-gray-500 text-center mt-1'>See what our users have to say about us</p>
                 <div className='lg:w-[75vw] my-10 flex lg:gap-16 gap-5 flex-wrap justify-center mx-auto text-gray-500'>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
-                        <h3 className='text-gray-300 mt-2'>"I feel so much more secure sharing links"</h3>
+                        <h3 className='text-gray-300 mt-2'>&quot;I feel so much more secure sharing links&quot;</h3>
                         <p className='my-2'>I can share things with confidence now, and the process is straightforward.</p>
                         <h4 className='text-gray-200 mt-4'>Rohan Chaturvedi</h4>
                         <p>Freelancer</p>
                     </div>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
-                        <h3 className='text-gray-300 mt-2'>"Effortless and Reliable"</h3>
+                        <h3 className='text-gray-300 mt-2'>&quot;Effortless and Reliable&quot;</h3>
                         <p className='my-2'>The site is lifesaver when we are in a rush, it does all our work quickly.</p>
                         <h4 className='text-gray-200 mt-4'>Sophia M.</h4>
                         <p>Marketing Manager</p>
                     </div>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
-                        <h3 className='text-gray-300 mt-2'>"A must-have for any marketer"</h3>
-                        <p className='my-2'>SnapLink has made my job so much easier in creating a quick link to customize everything, it's seamless.</p>
+                        <h3 className='text-gray-300 mt-2'>&quot;A must-have for any marketer&quot;</h3>
+                        <p className='my-2'>SnapLink has made my job so much easier in creating a quick link to customize everything, it&apos;s seamless.</p>
                         <h4 className='text-gray-200 mt-4'>Emma J.</h4>
                         <p>Marketing Consultant</p>
                     </div>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
-                        <h3 className='text-gray-300 mt-2'>"Perfect for my blog"</h3>
+                        <h3 className='text-gray-300 mt-2'>&quot;Perfect for my blog&quot;</h3>
                         <p className='my-2'>I run a small blog and use it to shorten links for my posts.</p>
                         <h4 className='text-gray-200 mt-4'>Priya S.</h4>
                         <p>Blogger</p>
                     </div>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
-                        <h3 className='text-gray-300 mt-2'>"Super easy, super helpful"</h3>
-                        <p className='my-2'>I'm not super tech-savvy, but SnapLink is so easy to use.</p>
+                        <h3 className='text-gray-300 mt-2'>&quot;Super easy, super helpful&quot;</h3>
+                        <p className='my-2'>I&apos;m not super tech-savvy, but SnapLink is so easy to use.</p>
                         <h4 className='text-gray-200 mt-4'>Sarah T.</h4>
                         <p>Photographer</p>
                     </div>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
-                        <h3 className='text-gray-300 mt-2'>"Makes sharing links so easy"</h3>
-                        <p className='my-2'>I don't have to overthink sharing links anymore.</p>
+                        <h3 className='text-gray-300 mt-2'>&quot;Makes sharing links so easy&quot;</h3>
+                        <p className='my-2'>I don&apos;t have to overthink sharing links anymore.</p>
                         <h4 className='text-gray-200 mt-4'>Raj K.</h4>
                         <p>Business Owner</p>
                     </div>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
-                        <h3 className='text-gray-300 mt-2'>"Our team loves it"</h3>
-                        <p className='my-2'>It's so easy to maintain tons of links at once.</p>
+                        <h3 className='text-gray-300 mt-2'>&quot;Our team loves it&quot;</h3>
+                        <p className='my-2'>It&apos;s so easy to maintain tons of links at once.</p>
                         <h4 className='text-gray-200 mt-4'>Daniel L.</h4>
                         <p>Content Strategist</p>
                     </div>
