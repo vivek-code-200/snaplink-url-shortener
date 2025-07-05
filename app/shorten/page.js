@@ -70,7 +70,7 @@ export default function Page() {
             />
             <h1 className='font-bold text-center md:text-2xl text-xl '>Generate Your Own Custom URLs</h1>
             <p className='text-gray-500'>Your Links Your Control!!!</p>
-            <div className='mt-10 max-[500px]:w-[90vw] p-10 px-14 flex flex-col gap-6 rounded-lg border-[0px] bg-[rgba(255,0,183,0.04)]'>
+            <div className='mt-8 max-[500px]:w-[90vw] p-10 px-14 flex flex-col gap-6 rounded-lg border-[0px] bg-[rgba(255,0,183,0.04)]'>
                 <div className='flex flex-col'>
                     <label className='text-gray-400 my-2' htmlFor="url">Original URL</label>
                     <input onChange={(e) => { seturl(e.target.value) }} className='border-[1px] border-gray-500 text-[15px] p-2 px-5 rounded-lg' type="text" value={url} name="url" id="" placeholder='Enter Original URL' />
