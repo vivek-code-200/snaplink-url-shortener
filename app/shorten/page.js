@@ -88,7 +88,7 @@ export default function Page() {
                 <Link className='text-gray-400 hover:text-gray-200' target='_blank' href={generated}>{generated}</Link>
             </div>}
 
-            <Link href='/shorten/links'><button className="flex items-center gap-2 border-2 mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white">Your recent Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
+            {/* <Link href='/shorten/links'><button className="flex items-center gap-2 border-2 mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white">Your recent Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link> */}
 
         </div>
     )

@@ -14,7 +14,7 @@ const Footer = () => {
                         <Link className='w-fit' href='/about'><li className='hover:text-gray-400 ' >About</li></Link>
                         <Link className='w-fit' href='/contact'><li className='hover:text-gray-400 '>Contact us</li></Link>
                         <Link className='w-fit' href='/shorten'><li className='hover:text-gray-400 '>Generate Links</li></Link>
-                        <Link className='w-fit' href='/shorten/links'><li className='hover:text-gray-400 '>Your Links</li></Link>
+                        {/* <Link className='w-fit' href='/shorten/links'><li className='hover:text-gray-400 '>Your Links</li></Link> */}
                         <Link className='w-fit' href='/github' target='_blank'><li className='hover:text-gray-400 '>GitHub</li></Link>
 
                     </ul>
