@@ -10,13 +10,14 @@ export async function POST(request) {
     // Check if the shorturl exists
     const link=await collection.findOne({shorturl: body.shorturl})
     if(link){
-        return Response.json({success:false, error:true, message:"🚫 URL already exists"})
+        return Response.json({success:false, error:true, message:"Customized URL already exists!"})
     }
 
     const result=await collection.insertOne({
         url:body.url,
-        shorturl:body.shorturl
+        shorturl:body.shorturl,
+        id:body.id
     })
 
-    return Response.json({success:true,error:false,message:"URL Generated Successfully"})
+    return Response.json({success:true,error:false,message:"URL Generated Successfully!"})
 }

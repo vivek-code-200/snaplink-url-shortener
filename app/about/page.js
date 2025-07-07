@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const page = () => {
     return (
-        <div className='p-5 lg:px-16'>
+        <div className='p-5 lg:px-16 pt-32'>
             <h1 className='text-4xl text-white xl:px-32'>About</h1>
             <p className='text-gray-400 lg:w-[70vw] mt-5 xl:px-32'>SnapLink simplifies link management with short URLs. It does not need your credentials to shorten URLs which ensures a platform to make hassle-free platform. </p>
 
@@ -13,7 +13,7 @@ const page = () => {
                 </div>
                 <div className='lg:w-1/2 lg:m-5 p-5 border-2 border-gray-500 rounded-2xl'>
                     <h2 className='text-2xl text-white'>Overview</h2>
-                    <p className='text-gray-400 mt-3 text-[15px]'>SnapLink is an innovative URL shortener designed to simplify link management while providing advanced customization and tracking features. Whether users need a quick one-time short link or advanced tools for branding. SnapLink offers a seamless experience.</p>
+                    <p className='text-gray-400 mt-3 text-[15px]'>SnapLink is an innovative URL shortener designed to simplify link management while providing customization . It provides user that need a quick one-time short link to use . SnapLink offers a seamless experience.</p>
                     <p className='text-gray-400 mt-3 text-[15px]'>Users can shorten URLs instantly- no sign up required, provides a hassle free platform.</p>
                     <p className='text-gray-400 mt-3 text-[15px]'>Built for marketers, businesses, and everyday users, SnapLink enhances link performance, increases engagement, and making link sharing more efficient and impactful.</p>
                 </div>
@@ -58,20 +58,20 @@ const page = () => {
                         <h4 className='text-gray-200 mt-4'>Rohan Chaturvedi</h4>
                         <p>Freelancer</p>
                     </div>
-                    <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
+                    {/* <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
                         <h3 className='text-gray-300 mt-2'>&quot;Effortless and Reliable&quot;</h3>
                         <p className='my-2'>The site is lifesaver when we are in a rush, it does all our work quickly.</p>
                         <h4 className='text-gray-200 mt-4'>Sophia M.</h4>
                         <p>Marketing Manager</p>
-                    </div>
-                    <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
+                    </div> */}
+                    {/* <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
                         <h3 className='text-gray-300 mt-2'>&quot;A must-have for any marketer&quot;</h3>
                         <p className='my-2'>SnapLink has made my job so much easier in creating a quick link to customize everything, it&apos;s seamless.</p>
                         <h4 className='text-gray-200 mt-4'>Emma J.</h4>
                         <p>Marketing Consultant</p>
-                    </div>
+                    </div> */}
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
                         <h3 className='text-gray-300 mt-2'>&quot;Perfect for my blog&quot;</h3>

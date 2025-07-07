@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Home : SnapLink",
-  description: "SnapLink website used to customize links... ",
+  description: "SnapLink enables user to to customize links quickly... ",
 };
 
 export default function RootLayout({ children }) {

@@ -40,7 +40,7 @@ export async function DELETE(request) {
     }
     try {
         const collection = db.collection("url")
-        await collection.deleteOne({ _id: new ObjectId(id) })
+        await collection.deleteOne({ id: id })
 
         return new Response({ success: true }, {
             status: 200,

@@ -56,7 +56,7 @@ const Page = () => {
     }
 
     return (
-        <div className='p-5 lg:px-16'>
+        <div className='p-5 lg:px-16 pt-32'>
             <ToastContainer
                 position="top-right"
                 autoClose={5000}

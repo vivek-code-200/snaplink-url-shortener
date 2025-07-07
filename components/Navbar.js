@@ -7,9 +7,9 @@ import { usePathname } from 'next/navigation'
 const Navbar = () => {
   const path=usePathname();
   return (
-    <nav className='text-white flex flex-col md:flex-row gap-3 md:justify-around items-center p-4  bg-[rgba(255,0,183,0.04)]  '>
+    <nav className='text-white flex flex-col md:flex-row gap-3 md:justify-around items-center p-4  bg-[rgb(34,10,28)] fixed top-0 w-full z-10'>
       <div className='Logo font-bold text-xl '>
-        <span>Snap</span><span className='text-[rgb(137,36,118)] text-2xl'>link</span>
+        <span>Snap</span><span className='text-[rgb(137,36,118)] text-2xl'>Link</span>
       </div>
 
       <ul className='flex justify-center gap-5  p-1 px-10  rounded-full text-gray-500 text-[15px]  border-y-[1px] border-gray-500'>
