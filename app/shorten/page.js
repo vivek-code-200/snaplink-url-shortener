@@ -100,7 +100,7 @@ export default function Page() {
 
     const copyText = (text) => {
         navigator.clipboard.writeText(text);
-        toast('🔗 URL Copied!', {
+        toast.success('🔗 URL Copied!', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -136,9 +136,10 @@ export default function Page() {
                 <div className='flex flex-col'>
                     <label className='text-gray-400 mb-2' htmlFor="url">Your URL</label>
                     <input onChange={(e) => { setshorturl(e.target.value) }} className='border-[1px] border-gray-500 p-2 text-[15px] px-5 rounded-lg' type="text" value={shorturl} name="url" id="" placeholder='Enter your URL' />
+                    {/* <p className='text-xs mt-2 text-gray-500'>Note : 🚫Space is not allowed</p> */}
                 </div>
 
-                <button ref={ref} onClick={() => generate()} className='p-1 px-5 my-6 bg-[rgb(137,36,118)] hover:bg-[rgba(161,70,145,0.74)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed' disabled={url.length < 10 || shorturl.length < 3}>Generate</button>
+                <button ref={ref} onClick={() => generate()} className='p-1 px-5 my-6 bg-[rgb(137,36,118)] hover:bg-[rgba(161,70,145,0.74)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed' disabled={url.length < 10 || shorturl.length < 3 || shorturl.includes(" ")}>Generate</button>
             </div>
 
             {generated && <div className='mt-5 text-center'>
@@ -150,7 +151,7 @@ export default function Page() {
             </div>
             }
 
-            <Link href='/shorten/links'><button className="flex items-center gap-2 border-2 mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white">Your recent Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
+            <Link href='/shorten/links' className=" border-2 mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white"><button className='flex gap-2  items-center cursor-pointer' >Your recent Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
 
         </div>
     )

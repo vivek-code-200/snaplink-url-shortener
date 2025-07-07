@@ -96,7 +96,7 @@ const Page = () => {
             />
             <div className='flex justify-between items-center lg:px-32'>
                 <h1 className='lg:text-4xl text-2xl text-white '>Your Links</h1>
-                <Link href='/shorten'><button className="flex items-center gap-2 border-2 lg:mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white">Generate Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
+                <Link href='/shorten' className="flex items-center gap-2 border-2 lg:mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white"><button className='flex items-center gap-2 cursor-pointer' >Generate Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
 
             </div>
 
