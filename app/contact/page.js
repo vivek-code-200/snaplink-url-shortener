@@ -4,28 +4,47 @@ import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
+import { useForm } from 'react-hook-form'
 
 const Page = () => {
 
-    const [contactform, setcontactform] = useState({ name:"",email:"",subject:"", message: "" })
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setError,
+        formState: { errors, isSubmitting, isSubmitSuccessful },
+    } = useForm()
+
+    const [contactform, setcontactform] = useState({ name: "", email: "", subject: "", message: "" })
 
     useEffect(() => {
-      document.title="Contact us : SnapLink"
+        document.title = "Contact us : SnapLink"
     }, [])
-    
+
     const handleChange = (e) => {
         setcontactform({ ...contactform, [e.target.name]: e.target.value })
     }
 
-     const send = () => {
+    const delay = (d) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, d * 1000);
+        })
+    }
+
+    const send = async () => {
+
+        await delay(3)
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
             "name": contactform.name,
             "email": contactform.email,
-            "subject":contactform.subject,
-            "message":contactform.message
+            "subject": contactform.subject,
+            "message": contactform.message
         });
 
         const requestOptions = {
@@ -39,7 +58,7 @@ const Page = () => {
             .then((response) => response.json())
             .then((result) => {
                 console.log(result)
-                toast(result.message, {
+                toast.success(result.message, {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -52,7 +71,7 @@ const Page = () => {
             })
             .catch((error) => console.error(error))
 
-        setcontactform({ name:"",email:"",subject:"", message: "" })
+        setcontactform({ name: "", email: "", subject: "", message: "" })
     }
 
     return (
@@ -86,35 +105,44 @@ const Page = () => {
                         <li className=''><div className='flex gap-3'><Image alt='Email symbol' width={25} height={40} src="/emailgif.gif" /> <div className='text-gray-300'>Email </div></div><span className='mx-9 max-[345px]:text-[15px]'>vivekkumarsoni7646@gmail.com</span></li>
                     </ul>
                 </div>
-                <div className='box2 xl:w-[40vw] p-5 flex flex-col justify-center gap-8 '>
-                    <div className='flex lg:flex-row flex-col gap-10'>
+                <form action="" onSubmit={handleSubmit(send)}>
+                    <div className='box2 xl:w-[40vw] p-5 flex flex-col justify-center gap-8 '>
+                        <div className='flex lg:flex-row flex-col gap-10'>
 
-                        <div className='flex lg:w-1/2 flex-col gap-1'>
-                            <label className='text-gray-300' htmlFor="name">Your Name</label>
-                            <input onChange={(e)=>handleChange(e)} type="text" name="name" value={contactform.name} id="" className=' outline-none border-b-2 p-1 ' placeholder='Enter your name' required />
+                            <div className='flex lg:w-1/2 flex-col gap-1'>
+                                <label className='text-gray-300' htmlFor="name">Your Name</label>
+                                <input {...register("name", { required: { value: true, message: "Type your name" }, minLength: { value: 5, message: "Enter valid name" } })} onChange={(e) => handleChange(e)} type="text" name="name" value={contactform.name} id="" className=' outline-none border-b-2 p-1 ' placeholder='Enter your name' />
+                                {errors.name && <div className='message text-[12px] text-red-400 m-1'> {errors.name.message}</div>}
+                            </div>
+                            <div className='flex lg:w-1/2 flex-col gap-1'>
+                                <label className='text-gray-300' htmlFor="email">Your Email</label>
+                                <input {...register("email", { required: { value: true, message: "Type your email" }, minLength: { value: 13, message: "Your email is invalid" }, validate: (value) => value.includes("@gmail.com") || "Your email is invalid" })} onChange={(e) => handleChange(e)} type="text" name="email" value={contactform.email} id="" className='outline-none border-b-2 p-1 ' placeholder='Enter your email' />
+                                {errors.email && <div className='message text-[12px] text-red-400 m-1'> {errors.email.message}</div>}
+                            </div>
                         </div>
-                        <div className='flex lg:w-1/2 flex-col gap-1'>
-                            <label className='text-gray-300' htmlFor="email">Your Email</label>
-                            <input onChange={(e)=>handleChange(e)} type="text" name="email" value={contactform.email} id="" className='outline-none border-b-2 p-1 ' placeholder='Enter your email' required />
+                        <div className='flex flex-col gap-1'>
+                            <label className='text-gray-300' htmlFor="subject">Your Subject</label>
+                            <select {...register("subject", { required: { value: true, message: "Choose your subject" }, minLength: { value: 2, message: "Choose your subject" } })} onChange={(e) => handleChange(e)} className='outline-none  border-b-2 p-1 px-2 ' name="subject" value={contactform.subject} id="" required>
+                                <option className='bg-[rgb(53,16,44)]' value="Question">Question</option>
+                                <option className='bg-[rgb(53,16,44)]' value="Bug">Bug Report</option>
+                                <option className='bg-[rgb(53,16,44)]' value="Feedback">Feedback</option>
+                                <option className='bg-[rgb(53,16,44)]' value="Requests">Features Request</option>
+                            </select>
+                            {errors.subject && <div className='message text-[12px] text-red-400 m-1'> {errors.subject.message}</div>}
                         </div>
-                    </div>
-                    <div className='flex flex-col gap-1'>
-                        <label className='text-gray-300' htmlFor="subject">Your Subject</label>
-                        <select onChange={(e)=>handleChange(e)} className='outline-none border-b-2 p-1 px-2 ' name="subject" value={contactform.subject} id="" required>
-                            <option value="Question">Question</option>
-                            <option value="Bug">Bug Report</option>
-                            <option value="Feedback">Feedback</option>
-                            <option value="Requests">Features Request</option>
-                        </select>
-                    </div>
 
-                    <div className='flex flex-col gap-1'>
-                        <label className='text-gray-300' htmlFor="message">Your Message</label>
-                        <textarea onChange={(e)=>handleChange(e)} className='outline-none border-b-2 p-1' name="message" value={contactform.message} id="" placeholder='Write your message here' required></textarea>
-                    </div>
+                        <div className='flex flex-col gap-1'>
+                            <label className='text-gray-300' htmlFor="message">Your Message</label>
+                            <textarea {...register("message", { required: { value: true, message: "Type your message" }, minLength: { value: 10, message: "Minimum length should be 10" } })} onChange={(e) => handleChange(e)} className='outline-none border-b-2 p-1' name="message" value={contactform.message} id="" placeholder='Write your message here' ></textarea>
+                            {errors.message && <div className='message text-[12px] text-red-400 m-1'> {errors.message.message}</div>}
 
-                    <button onClick={()=>{send()}} className='bg-[rgb(110,29,96)] text-center text-white p-2 hover:bg-[rgba(153,66,138,0.63)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed' disabled={contactform.name<3|| contactform.email<10 || contactform.subject<3||contactform.message<5}>Send your request</button>
-                </div>
+                        </div>
+
+                        <button id='send' type='submit' className={`${isSubmitting ? "hidden" : ""} disabled:bg-[rgb(110,29,96)] w-full text-center text-white p-2 hover:bg-[rgb(137,36,92)]  cursor-pointer bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed`} disabled={isSubmitting}>Send your request</button>
+
+                        {isSubmitting && <button id='send' type='submit' className=' w-full text-center text-white p-2  bg-[rgba(137,36,92,0.85)] cursor-not-allowed'>Sending...</button>}
+                    </div>
+                </form>
             </div>
         </div>
     )

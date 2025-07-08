@@ -27,7 +27,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <p className='md:text-center text-center mt-8 md:mt-0 text-gray-400 md:text-[13px] text-[12px]'>Copyright &copy;{currentYear} SnapLink  | All rights reserved </p>
+            <p className='md:text-center text-center mt-12 md:mt-0 text-gray-400 md:text-[13px] text-[12px]'>Copyright &copy;{currentYear} SnapLink  | All rights reserved </p>
             <div className='md:text-center text-center text-gray-400 mt-2 md:text-[13px] text-[12px]'>Made with ❤️ by <span className='text-white font-bold'>viv-code-404</span> </div>
         </div>
     )

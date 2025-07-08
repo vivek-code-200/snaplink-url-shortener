@@ -6,15 +6,23 @@ import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 import { v4 as uuidv4 } from 'uuid';
-import { useRef } from 'react'
+import { useForm } from 'react-hook-form'
 
 export default function Page() {
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setError,
+        formState: { errors, isSubmitting, isSubmitSuccessful },
+    } = useForm()
+
     const [url, seturl] = useState("")
     const [shorturl, setshorturl] = useState("")
-    const [generated, setgenerated] = useState("")
     const [id, setid] = useState("")
 
-    const ref=useRef()
+    const [generated, setgenerated] = useState("")
 
     const [urls, seturls] = useState([])
 
@@ -24,7 +32,7 @@ export default function Page() {
         if (urlsnumber != null) {
             let urls = JSON.parse(localStorage.getItem("snaplink"))
             seturls(urls)
-        }    
+        }
     }, [])
 
     useEffect(() => {
@@ -36,12 +44,17 @@ export default function Page() {
         localStorage.setItem("snaplink", JSON.stringify(urls))
     }
 
-    const generate = async() => {
+    const delay = (d) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, d * 1000);
+        })
+    }
 
-        await setTimeout(() => {
-            ref.text="ge"
-        }, 2000);
+    const generate = async () => {
 
+        await delay(3)
 
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -64,8 +77,8 @@ export default function Page() {
             .then((result) => {
                 console.log(result)
                 // alert(result.message)
-                setgenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`)
-                if(result.success===true){
+                if (result.success === true) {
+                    setgenerated(`${process.env.NEXT_PUBLIC_HOST}${shorturl}`)
                     seturl("")
                     setshorturl("")
                     seturls([...urls, { "url": url, "shorturl": shorturl, "id": id }])
@@ -81,7 +94,7 @@ export default function Page() {
                         theme: "dark",
                     });
                 }
-                else{
+                else {
                     toast.error(result.message, {
                         position: "top-right",
                         autoClose: 5000,
@@ -95,7 +108,6 @@ export default function Page() {
                 }
             })
             .catch((error) => console.error(error))
-
     }
 
     const copyText = (text) => {
@@ -113,7 +125,7 @@ export default function Page() {
     }
 
     return (
-        <div className='text-white flex  py-44 flex-col items-center justify-center'>
+        <div className='text-white flex  py-48 flex-col items-center justify-center'>
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -129,23 +141,27 @@ export default function Page() {
             <h1 className='font-bold text-center md:text-2xl text-xl '>Generate Your Own Custom URLs</h1>
             <p className='text-gray-500'>Your Links Your Control!!!</p>
             <div className='mt-8 max-[500px]:w-[90vw] p-10 px-14 flex flex-col gap-6 rounded-lg border-[0px] bg-[rgba(255,0,183,0.04)]'>
-                <div className='flex flex-col'>
-                    <label className='text-gray-400 my-2' htmlFor="url">Original URL</label>
-                    <input onChange={(e) => { seturl(e.target.value) }} className='border-[1px] border-gray-500 text-[15px] p-2 px-5 rounded-lg' type="text" value={url} name="url" id="" placeholder='Enter Original URL' />
-                </div>
-                <div className='flex flex-col'>
-                    <label className='text-gray-400 mb-2' htmlFor="url">Your URL</label>
-                    <input onChange={(e) => { setshorturl(e.target.value) }} className='border-[1px] border-gray-500 p-2 text-[15px] px-5 rounded-lg' type="text" value={shorturl} name="url" id="" placeholder='Enter your URL' />
-                    {/* <p className='text-xs mt-2 text-gray-500'>Note : 🚫Space is not allowed</p> */}
-                </div>
+                <form action="" onSubmit={handleSubmit(generate)} >
+                    <div className='flex flex-col'>
+                        <label className='text-gray-400 my-2' htmlFor="url">Original URL</label>
+                        <input {...register("url", { required: { value: true, message: "Input your Long URL." }, validate: (value) => value.startsWith("https://") || "🚫Link is not valid." })} onChange={(e) => { seturl(e.target.value) }} className='border-[1px] border-gray-500 text-[15px] p-2 px-5 rounded-lg' type="text" value={url} name="url" id="" placeholder='Enter Original URL' />
+                        {errors.url && <div className='message text-[12px] text-red-400 m-1'> {errors.url.message}</div>}
+                    </div>
+                    <div className='flex flex-col mt-4'>
+                        <label className='text-gray-400 mb-2' htmlFor="shortUrl">Your URL</label>
+                        <input {...register("shortUrl", { required: { value: true, message: "Input your Short URL." }, minLength: { value: 3, message: "Minimum length should be 3." }, validate: (value) => !/\s/.test(value) || "🚫Space is not allowed." })} onChange={(e) => { setshorturl(e.target.value) }} className='border-[1px] border-gray-500 p-2 text-[15px] px-5 rounded-lg' type="text" value={shorturl} name="shortUrl" id="" placeholder='Enter your URL' />
+                        {errors.shortUrl && <div className='message text-[12px] text-red-400 m-1'> {errors.shortUrl.message}</div>}
+                    </div>
 
-                <button ref={ref} onClick={() => generate()} className='p-1 px-5 my-6 bg-[rgb(137,36,118)] hover:bg-[rgba(161,70,145,0.74)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed' disabled={url.length < 10 || shorturl.length < 3 || shorturl.includes(" ")}>Generate</button>
+                    <button type='submit' className='p-1 px-5 w-full my-6 mt-8 bg-[rgba(137,36,102,0.79)] hover:bg-[rgb(137,36,102)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed' disabled={isSubmitting}>Generate</button>
+                </form>
             </div>
+                {isSubmitting && <div className='text-center'> Generating... </div>}
 
-            {generated && <div className='mt-5 text-center'>
+            {isSubmitSuccessful && generated && <div className='mt-5 text-center'>
                 <div className='text-gray-500 '>Your Link is Generated 👇 !!!</div>
                 <div className='flex gap-5'>
-                    <Link className='text-gray-400 hover:text-gray-200 hover:underline' target='_blank' href={generated}>{generated}</Link>
+                    <Link className='text-gray-400 hover:text-blue-500 underline' target='_blank' href={generated}>{generated}</Link>
                     <Image onClick={() => copyText(generated)} src="/copy1.svg" width={50} height={80} className='w-5 invert-100 opacity-50 hover:opacity-100 cursor-pointer' alt="copy" />
                 </div>
             </div>

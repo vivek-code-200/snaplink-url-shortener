@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link href='/contact'><li className={`${path==='/contact'?"text-white  font-bold":"hover:text-white"}`}>Contact us</li></Link>
       </ul>
 
-      <Link href="/github" target='_blank'><button className=' max-[361px]:text-xs hidden items-center md:gap-2 gap-1 md:flex cursor-pointer'><Image alt='github symbol' className='invert-50' width={18} height={18} src="/github.svg" /> Github</button></Link>
+      <Link href="/github" target='_blank'><button className=' max-[361px]:text-xs hidden items-center md:gap-2 gap-1 md:flex cursor-pointer mr-6'><Image alt='github symbol' className='invert-50' width={18} height={18} src="/github.svg" /> Github</button></Link>
     </nav>
   )
 }

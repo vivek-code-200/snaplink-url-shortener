@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="text-white pt-32">
+    <div className="text-white pt-44 lg:pt-40">
       <div className="md:w-[75vw]  mx-auto flex flex-col gap-4 justify-center items-center  p-4">
 
         <p className="md:text-4xl text-3xl text-center ">Create Your Customized Short URL</p>
@@ -14,13 +14,13 @@ export default function Home() {
 
       <div>
         <h1 className="md:text-4xl text-3xl mt-16 text-center mx-10 ">What is SnapLink?</h1>
-        <p className="text-gray-500 mt-4 text-center">SnapLink is like a tool which sortifies your long links into your customized one.</p>
-        <div className="w-[75vw] mx-auto mt-8 flex items-center justify-between gap-5 md:gap-0 md:flex-row flex-col">
+        <p className="text-gray-500 mt-4 text-center px-5">SnapLink is like a tool which sortifies your long links into your customized one.</p>
+        <div className="w-[75vw] mx-auto mt-8 flex items-center justify-between gap-8 md:gap-0 md:flex-row flex-col">
           <div className="flex flex-col gap-2 w-[40vw] justify-center items-center">
             <h3 className="text-gray-300 font-bold">Long URL</h3>
             <p className="text-xs shadow-lg shadow-gray-400 md:w-[30vw] h-[14vh] w-[90vw] border-0 overflow-auto p-4 rounded-2xl text-gray-600">https://www.google.com/search?sca_esv=92a21b5f98878f45&rlz=1C1CHBF_enIN1133IN1133&sxsrf=AE3TifN6g_BzMx59WmbEem0wyN5oKIV8Vg:1750071872300&q=ui+for+url+shortener+website&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeoJTKjrFjVxydQWqI2NcOha3O1YqG67F0QIhAOFN_ob1yXos5K_Qo9Tq-0cVPzex8akBC0YDCZ6Kdb3tXvKc6RFFaJZ5G23Reu3aSyxvn2qD41n-47oj-b-f0NcRPP5lz0IcnVzj2DIj_DMpoDz5XbfZAMcEl5-58jjbkgCC_7e4L5AEDQ&sa=X&ved=2ahUKEwi2rJ7i5fWNAxVr4zgGHR7GMzoQtKgLegQIFhAB&biw=1536&bih=826&dpr=1.25</p>
           </div>
-          <img src="/leftarrow.svg" className="w-10 md:rotate-180 rotate-270 invert-100 opacity-60 md:mt-5" alt="" />
+          <img src="/leftarrow.svg" className="w-8 md:rotate-180 rotate-270 invert-100 opacity-60 md:mt-5" alt="" />
           <div className="flex flex-col gap-2 w-[40vw] justify-center items-center">
             <h3 className="text-gray-300 font-bold text-center">Customized short URL</h3>
             <p className="text-base shadow-lg shadow-gray-400 md:w-[30vw] h-[14vh]  w-[80vw] border-0 overflow-auto p-4 rounded-2xl text-gray-600">https://snaplink-one.vercel.app/ <span className="text-gray-300">your_choice</span></p>
@@ -29,9 +29,9 @@ export default function Home() {
 
       </div>
 
-      <div className="mt-20 w-full">
-        <h1 className="text-center text-3xl border-b-2 border-gray-500 lg:w-[30vw] w-[90vw]  mx-auto ">How SnapLink Works?</h1>
-        <div className="flex lg:flex-row flex-col gap-10 lg:mx-20 mx-5 mt-10">
+      <div className="mt-28 w-full">
+        <h1 className="text-center md:text-4xl text-3xl border-b-0 border-gray-500 lg:w-[30vw] w-[90vw]  mx-auto ">How SnapLink Works?</h1>
+        <div className="flex lg:flex-row flex-col gap-10 lg:mx-20 mx-5 mt-16">
           <div className="flex items-center justify-center lg:w-1/2 ">
 
             <img src="/neonbg.jpg" className="object-contain  rounded-2xl shadow-2xl shadow-gray-400 hover:shadow-white" alt="" />
@@ -68,7 +68,7 @@ export default function Home() {
 
 
       </div>
-      <div className="trusted flex flex-col items-center justify-center mt-15 gap-5">
+      <div className="trusted flex flex-col items-center justify-center my-24 gap-5">
         <h1 className="lg:text-3xl text-2xl px-5 lg:px-0 text-center lg:w-[30vw] ">Trusted By Industry Leaders Worldwide</h1>
         <p className="text-gray-500 lg:w-[40vw] px-5 lg:px-0 text-center">From global enterprises to growing startups, businesses across industries rely on SnapLink for smarter, faster, and secure link customization.</p>
         {/* <div className="flex md:gap-10 gap-6 flex-wrap md:flex-nowrap justify-center">

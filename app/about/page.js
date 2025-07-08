@@ -49,7 +49,7 @@ const page = () => {
             <div className='Testimonials md:w-[75vw] mx-auto'>
                 <h2 className='text-3xl text-center text-white border-b-2 pb-2 border-gray-500'>Testimonials</h2>
                 <p className='text-xl mt-8 text-gray-400 text-center'>&quot;Don&apos;t Take Our Word for it&quot;</p>
-                <p className='text-gray-500 text-center mt-1'>See what our users have to say about us</p>
+                <p className='text-gray-500 text-center mt-1'>See what our users have said about us</p>
                 <div className='lg:w-[75vw] my-10 flex lg:gap-16 gap-5 flex-wrap justify-center mx-auto text-gray-500'>
                     <div className='xl:w-[20vw] lg:w-[50vw] w-full border-y-[1px] rounded-2xl p-2'>
                         <Image className='mix-blend-color-dodge' alt='rating symbol' width={110} height={100} src="/star.png"/>
