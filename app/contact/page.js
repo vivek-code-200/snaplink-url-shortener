@@ -111,7 +111,7 @@ const Page = () => {
 
                             <div className='flex lg:w-1/2 flex-col gap-1'>
                                 <label className='text-gray-300' htmlFor="name">Your Name</label>
-                                <input {...register("name", { required: { value: true, message: "Type your name" }, minLength: { value: 5, message: "Enter valid name" } })} onChange={(e) => handleChange(e)} type="text" name="name" value={contactform.name} id="" className=' outline-none border-b-2 p-1 ' placeholder='Enter your name' />
+                                <input {...register("name", { required: { value: true, message: "Type your name" }, minLength: { value: 8, message: "Enter your full name" } })} onChange={(e) => handleChange(e)} type="text" name="name" value={contactform.name} id="" className=' outline-none border-b-2 p-1 ' placeholder='Enter your name' />
                                 {errors.name && <div className='message text-[12px] text-red-400 m-1'> {errors.name.message}</div>}
                             </div>
                             <div className='flex lg:w-1/2 flex-col gap-1'>
@@ -122,7 +122,8 @@ const Page = () => {
                         </div>
                         <div className='flex flex-col gap-1'>
                             <label className='text-gray-300' htmlFor="subject">Your Subject</label>
-                            <select {...register("subject", { required: { value: true, message: "Choose your subject" }, minLength: { value: 2, message: "Choose your subject" } })} onChange={(e) => handleChange(e)} className='outline-none  border-b-2 p-1 px-2 ' name="subject" value={contactform.subject} id="" required>
+                            <select {...register("subject", { required:"Select your subject" })} onChange={(e) => handleChange(e)} className='outline-none  border-b-2 p-1 px-2 ' name="subject" value={contactform.subject} id="" >
+                                <option className='bg-[rgb(53,16,44)]' value="" disabled hidden>Choose your subject</option>
                                 <option className='bg-[rgb(53,16,44)]' value="Question">Question</option>
                                 <option className='bg-[rgb(53,16,44)]' value="Bug">Bug Report</option>
                                 <option className='bg-[rgb(53,16,44)]' value="Feedback">Feedback</option>
@@ -140,7 +141,7 @@ const Page = () => {
 
                         <button id='send' type='submit' className={`${isSubmitting ? "hidden" : ""} disabled:bg-[rgb(110,29,96)] w-full text-center text-white p-2 hover:bg-[rgb(137,36,92)]  cursor-pointer bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed`} disabled={isSubmitting}>Send your request</button>
 
-                        {isSubmitting && <button id='send' type='submit' className=' w-full text-center text-white p-2  bg-[rgba(137,36,92,0.85)] cursor-not-allowed'>Sending...</button>}
+                        {isSubmitting && <button id='send' type='submit' className=' w-full flex items-center justify-center gap-1 text-center text-white p-2  bg-[rgba(137,36,92,0.85)] cursor-not-allowed'>Sending <img src="/loader.gif" className='invert-100 mix-blend-lighten w-5 pt-2 ' alt="" /></button>}
                     </div>
                 </form>
             </div>

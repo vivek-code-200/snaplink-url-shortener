@@ -156,7 +156,7 @@ export default function Page() {
                     <button type='submit' className='p-1 px-5 w-full my-6 mt-8 bg-[rgba(137,36,102,0.79)] hover:bg-[rgb(137,36,102)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed' disabled={isSubmitting}>Generate</button>
                 </form>
             </div>
-                {isSubmitting && <div className='text-center'> Generating... </div>}
+                 {isSubmitting && <div className='text-center flex flex-col gap-2 items-center mt-5'> Generating... <img src="/loader.gif" className='mix-blend-lighten invert-100 w-8' alt="" /></div>}
 
             {isSubmitSuccessful && generated && <div className='mt-5 text-center'>
                 <div className='text-gray-500 '>Your Link is Generated 👇 !!!</div>
