@@ -22,13 +22,13 @@ const Footer = () => {
                 <div className='text-gray-500 md:text-[15px] text-[13px]'>
                     <h1 className=' text-gray-400 font-bold text-base'>Contact</h1>
                     <p className='mt-3 flex gap-3'><Image alt='email symbol' className='invert-50' width={15} height={15} src="/emailsvg.svg" /> vivekkumarsoni7646@gmail.com</p>
-                    <p className='mt-1 flex gap-3'><Image alt='github symbol' className='invert-50' width={18} height={1} src="/github.svg" />viv-code-404</p>
+                    <p className='mt-1 flex gap-3'><Image alt='github symbol' className='invert-50' width={18} height={1} src="/github.svg" />vivek-code-200</p>
                     <p className='mt-1 flex gap-2'><Image alt='call symbol' className='invert-50' width={18} height={18} src="/call.svg" />+91 7646062081</p>
                 </div>
             </div>
 
             <p className='md:text-center text-center mt-12 md:mt-0 text-gray-400 md:text-[13px] text-[12px]'>Copyright &copy;{currentYear} SnapLink  | All rights reserved </p>
-            <div className='md:text-center text-center text-gray-400 mt-2 md:text-[13px] text-[12px]'>Made with ❤️ by <span className='text-white font-bold'>viv-code-404</span> </div>
+            <div className='md:text-center text-center text-gray-400 mt-2 md:text-[13px] text-[12px]'>Made with ❤️ by <span className='text-white font-bold'>vivek-code-200</span> </div>
         </div>
     )
 }
