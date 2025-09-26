@@ -37,7 +37,7 @@ Follow these steps to run SnapLink locally:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/viv-code-404/snaplink.git
+git clone https://github.com/vivek-code-200/snaplink.git
 cd snaplink
 ```
 
@@ -99,5 +99,5 @@ This project is licensed under the **MIT License**.
 
 ## 👨‍💻 Author
 
-**SnapLink** is developed by Vivek Kumar Soni(https://github.com/viv-code-404).  
+**SnapLink** is developed by Vivek Kumar Soni(https://github.com/vivek-code-200).  
 
