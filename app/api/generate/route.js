@@ -1,4 +1,6 @@
 import clientPromise from "@/lib/mongodb"
+import { v4 as uuidv4 } from "uuid";
+import { NextResponse } from "next/server";
 
 export async function POST(request) {
 
@@ -7,17 +9,32 @@ export async function POST(request) {
     const db=client.db("snaplink")
     const collection =db.collection("url")
 
-    // Check if the shorturl exists
     const link=await collection.findOne({shorturl: body.shorturl})
     if(link){
-        return Response.json({success:false, error:true, message:"Customized URL already exists!"})
+        return NextResponse.json({success:false, error:true, message:"Customized URL already exists!"})
     }
 
+    let key=body.userkey;
+    const userKey=await collection.findOne({userkey:body.userkey})
+
+    if(userKey){
+        key=userKey.userkey
+    }
+    else{
+        key= uuidv4();
+
+        await db.collection('users').insertOne({
+        userkey:key,
+        createdAt:new Date(),
+    });
+    } 
+
     const result=await collection.insertOne({
+        userkey:key,
         url:body.url,
         shorturl:body.shorturl,
-        id:body.id
+        createdAt:new Date()
     })
 
-    return Response.json({success:true,error:false,message:"URL Generated Successfully!"})
+    return NextResponse.json({success:true,error:false,message:"URL Generated Successfully!",userkey:key})
 }

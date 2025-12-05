@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+
   return (
     <div className="text-white pt-44 lg:pt-40">
       <div className="md:w-[75vw]  mx-auto flex flex-col gap-4 justify-center items-center  p-4">
@@ -9,7 +10,7 @@ export default function Home() {
         <p className="md:text-4xl text-3xl text-center ">Create Your Customized Short URL</p>
         <p className="text-gray-500 md:text-[16px] text-[15px] text-center">We are the most straightforward URL shortener in the world. Most of the URL shorteners will track you or ask you to give your details for login . We understand your needs and hence we have created this URL shortener.</p>
         <p className="text-gray-400 text-xl">Customize your links now 👇</p>
-        <Link href='/shorten'><button className="flex items-center gap-2 border-2 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white">Customize Your Links <Image alt="link symbol" className='mix-blend-lighten invert-100' width={18} height={0} src="/link.png" /></button></Link>
+        <Link href='/shorten'><button className="flex items-center gap-2 border-2 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white hover:shadow-lg shadow-gray-600 transition-all duration-300 active:scale-110">Customize Your Links <Image alt="link symbol" className='mix-blend-lighten invert-100' width={18} height={0} src="/link.png" /></button></Link>
       </div>
 
       <div>
@@ -34,14 +35,14 @@ export default function Home() {
         <div className="flex lg:flex-row flex-col gap-10 lg:mx-20 mx-5 mt-16">
           <div className="flex items-center justify-center lg:w-1/2 ">
 
-            <img src="/neonbg.jpg" className="object-contain  rounded-2xl shadow-2xl shadow-gray-400 hover:shadow-white" alt="" />
+            <img src="/neonbg.jpg" className="object-contain  rounded-2xl shadow-2xl shadow-gray-400 hover:shadow-white transition-all duration-300" alt="" />
           </div>
 
           <div className="flex gap-5 flex-col lg:w-1/2 lg:border-l-1 border-gray-500  md:px-20">
 
             <div className="flex flex-col items-start" >
               <h2 className="text-xl my-3">Step 1 :</h2>
-              <div className="border-y-1 w-64 hover:shadow-lg shadow-gray-400 rounded-lg p-5 flex flex-col justify-center items-center">
+              <div className="border-y-1 w-64 hover:shadow-lg transition-all duration-300 shadow-gray-400 rounded-lg p-5 flex flex-col justify-center items-center">
                 <img src="/step1.png" className="rounded-full" alt="" />
                 <p className="mt-3 text-gray-400 text-center">Click on Customize your Links button</p>
               </div>
@@ -49,7 +50,7 @@ export default function Home() {
 
             <div className="flex flex-col items-end">
               <h2 className="text-xl my-3">Step 2 :</h2>
-              <div className="border-y-1 w-64 hover:shadow-lg shadow-gray-400 rounded-lg p-5 flex flex-col justify-center items-center">
+              <div className="border-y-1 w-64 hover:shadow-lg transition-all duration-300 shadow-gray-400 rounded-lg p-5 flex flex-col justify-center items-center">
                 <img src="/step2.png" className=" rounded-lg" alt="" />
                 <p className="mt-3 text-gray-400 text-center">Input your long and short URL.</p>
               </div>
@@ -57,7 +58,7 @@ export default function Home() {
 
             <div>
               <h2 className="text-xl my-3">Step 3 :</h2>
-              <div className="border-y-1 w-64 hover:shadow-lg shadow-gray-400 rounded-lg p-5 flex flex-col justify-center items-center">
+              <div className="border-y-1 w-64 hover:shadow-lg transition-all duration-300 shadow-gray-400 rounded-lg p-5 flex flex-col justify-center items-center">
                 <img src="/step3.png" className=" rounded-lg" alt="" />
                 <p className="mt-3 text-gray-400 text-center">Click on Generate button And Enjoy!!!</p>
               </div>
@@ -71,17 +72,6 @@ export default function Home() {
       <div className="trusted flex flex-col items-center justify-center my-24 gap-5">
         <h1 className="lg:text-3xl text-2xl px-5 lg:px-0 text-center lg:w-[30vw] ">Trusted By Industry Leaders Worldwide</h1>
         <p className="text-gray-500 lg:w-[40vw] px-5 lg:px-0 text-center">From global enterprises to growing startups, businesses across industries rely on SnapLink for smarter, faster, and secure link customization.</p>
-        {/* <div className="flex md:gap-10 gap-6 flex-wrap md:flex-nowrap justify-center">
-          <Image className="mix-blend-color-dodge" alt="rotring brand" width={50} height={50} src="/rotring.png" />
-          <Image className="mix-blend-lighten" alt="AT&T brand" width={50} height={50} src="/at.png" />
-          <Image className="mix-blend-lighten" alt="airbnb brand" width={50} height={50} src="/airbnb.png" />
-          <Image className="mix-blend-lighten" alt="pbs brand" width={50} height={50} src="/pbs.png" />
-          <Image className="mix-blend-lighten" alt="xerox brand" width={50} height={50} src="/xerox.png" />
-          <Image className="mix-blend-lighten" alt="google brand" width={50} height={1} src="/google.png" />
-          <Image className="mix-blend-lighten" alt="facebook brand" width={50} height={0} src="/facebook.png" />
-          <Image className="mix-blend-lighten" alt="yonex brand" width={50} height={50} src="/yonex.png" />
-
-        </div> */}
       </div>
 
       <div className="survey mt-20">
@@ -97,10 +87,6 @@ export default function Home() {
             <h2 className="text-white">Q2: How important is it for you to customize URLs (e.g., adding slugs or branded links)?</h2>
             <p className="text-gray-500 text-[15px] py-3 ">ANS: Customization is very important. Branded links increase trust with users and improve click-through rates. Being able to add a unique slug or include the company name in the URL helps reinforce our brand identity.</p>
           </div>
-          {/* <div className="mt-5">
-            <h2 className="text-white">Q3: How do you currently track the performace of your shared links?</h2>
-            <p className="text-gray-500 text-[15px] py-3 border-b-2">ANS: I primarily used Google Analytics, but it&apos;s difficult to tie specific links to compaign without proper tagging or dedicated tools. Having a built-in analytics feature in the URL shortener would simplify the process and save time.</p>
-          </div> */}
         </div>
       </div>
     </div>

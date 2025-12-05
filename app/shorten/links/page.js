@@ -11,30 +11,28 @@ const Page = () => {
     const [urls, seturls] = useState([])
 
     useEffect(() => {
-        // getLinks()
         document.title = "Your Links : SnapLink"
 
-        let urlnumber = localStorage.getItem("snaplink");
-        if (urlnumber != null) {
-            let urls = JSON.parse(localStorage.getItem("snaplink"))
-            seturls(urls)
-            localStorage.setItem("snaplink", JSON.stringify(urls))
+        const userkey = localStorage.getItem('userkey');
+        if (!userkey) return;
 
+        const getLinks = async () => {
+            try {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/data/${userkey}`);
+                const json = await res.json();
+                seturls(json.links)
+            } catch (err) {
+                console.error(err)
+            }
         }
+        getLinks()
     }, [])
 
-    // const getLinks = async () => {
 
-    //     await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/data`)
-    //         .then((res) => res.json())
-    //         .then((json) => setdburls(json))
-    //         .catch((err) => console.error('Failed to fetch: ', err))
-
-    // }
 
     const copyText = (text) => {
         navigator.clipboard.writeText(text);
-        toast.success('🔗 URL Copied!', {
+        toast.success('URL Copied!', {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -46,23 +44,24 @@ const Page = () => {
         });
     }
 
-    const handleDelete = async (id) => {
-        console.log("Deleting link with Id ", id)
+    const handleDelete = async (shorturl) => {
+        console.log("Deleting link with shorturl ", shorturl)
         let c = confirm("Do you really want to delete ?")
+
+        const userkey=localStorage.getItem('userkey')
+        if(!userkey) return;
         if (c) {
 
 
-            let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/data`, {
+            let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/data/${userkey}/${shorturl}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ id }),
+                }
             });
 
             if (res.ok) {
-                seturls(urls.filter(item => item.id != id))
-                localStorage.setItem("snaplink", JSON.stringify(urls.filter(item => item.id != id)))
+                seturls(urls=>urls.filter(item => item.shorturl != shorturl))
                 toast.success('URL Deleted!', {
                     position: "top-right",
                     autoClose: 5000,
@@ -96,7 +95,7 @@ const Page = () => {
             />
             <div className='flex justify-between items-center lg:px-32'>
                 <h1 className='lg:text-4xl text-2xl text-white '>Your Links</h1>
-                <Link href='/shorten' className="flex items-center gap-2 border-2 lg:mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white"><button className='flex items-center gap-2 cursor-pointer' >Generate Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
+                <Link href='/shorten' className="flex items-center gap-2 border-2 lg:mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white hover:shadow-lg shadow-gray-600 transition-all duration-300 active:scale-110"><button className='flex items-center gap-2 cursor-pointer' >Generate Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
 
             </div>
 
@@ -114,19 +113,19 @@ const Page = () => {
                     <tbody className='w-full border-b-1 '>
                         {urls.map((item) => {
                             return (
-                                <tr key={item.id} className=''>
+                                <tr key={item.shorturl} className=''>
                                     <td className='max-w-[10vw] overflow-x-scroll py-4 text-center'>{item.url}</td>
                                     <td className='lg:w-1/3 max-w-[10vw] overflow-x-scroll  py-4 text-center'>{`${item.shorturl}`}</td>
                                     <td className='w-1/3 text-center py-4 '>
                                         <div className='lg:flex hidden  justify-center gap-3'>
-                                            <div onClick={() => { copyText(`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`) }} className='text-center bg-[rgba(255,255,255,0)] border-x-1 border-gray-500 flex items-center gap-1 p-1 px-3 rounded-full text-gray-300 opacity-40 hover:opacity-90 justify-center w-fit cursor-pointer hover:text-gray-300 text-[14px]'>Copy<Image className='invert-100 block lg:block' alt='copy symbol' width={15} height={15} src="/copy.svg" /></div>
-                                            <Link target='_blank' href={`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`}><span className='text-center bg-[rgba(255,255,255,0)] border-x-1 border-gray-500 flex items-center gap-1 p-1 px-3 rounded-full text-gray-300 opacity-40 hover:opacity-90 justify-center w-fit cursor-pointer hover:text-gray-300 text-[14px]'>Open<Image className='invert-100' alt='arrow symbol' width={15} height={15} src="/open1.svg" /></span></Link>
-                                            <span onClick={() => { handleDelete(item.id) }} className='text-center bg-[rgba(255,255,255,0)] border-x-1 border-gray-500 flex items-center gap-1 p-1 px-3 rounded-full text-gray-300 opacity-40 hover:opacity-90 justify-center w-fit cursor-pointer hover:text-gray-300 text-[14px]'>Delete<Image className='invert-100' alt='delete symbol' width={15} height={15} src="/delete.svg" /></span>
+                                            <div onClick={() => { copyText(`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`) }} className='text-center bg-[rgba(255,255,255,0)] border-x-1 border-gray-500 flex items-center gap-1 p-1 px-3 rounded-full text-gray-300 opacity-40 hover:opacity-90 justify-center w-fit cursor-pointer hover:text-gray-300 text-[14px] transition-all duration-300 hover:shadow-md shadow-gray-600 active:scale-110'>Copy<Image className='invert-100 block lg:block' alt='copy symbol' width={15} height={15} src="/copy.svg" /></div>
+                                            <Link target='_blank' href={`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`}><span className='text-center bg-[rgba(255,255,255,0)] border-x-1 border-gray-500 flex items-center gap-1 p-1 px-3 rounded-full text-gray-300 opacity-40 hover:opacity-90 justify-center w-fit cursor-pointer hover:text-gray-300 text-[14px] transition-all duration-300 hover:shadow-md shadow-gray-600 active:scale-110'>Open<Image className='invert-100' alt='arrow symbol' width={15} height={15} src="/open1.svg" /></span></Link>
+                                            <span onClick={() => { handleDelete(item.id) }} className='text-center bg-[rgba(255,255,255,0)] border-x-1 border-gray-500 flex items-center gap-1 p-1 px-3 rounded-full text-gray-300 opacity-40 hover:opacity-90 justify-center w-fit cursor-pointer hover:text-gray-300 text-[14px] transition-all duration-300 hover:shadow-md shadow-gray-600 active:scale-110'>Delete<Image className='invert-100' alt='delete symbol' width={15} height={15} src="/delete.svg" /></span>
                                         </div>
                                         <div className=' flex lg:hidden  justify-center gap-2'>
-                                            <div onClick={() => { copyText(`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`) }} className='p-2 bg-[rgba(255,255,255,0)] border-1 border-gray-500  items-center rounded-full  opacity-40 hover:opacity-90 flex justify-center  cursor-pointer hover:text-gray-300 '><Image className='invert-100' alt='copy symbol' width={15} height={35} src="/copy.svg" /></div>
-                                            <Link target='_blank' href={`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`}><span className='p-2 bg-[rgba(255,255,255,0)] border-1 border-gray-500  items-center rounded-full  opacity-40 hover:opacity-90 flex justify-center  cursor-pointer hover:text-gray-300 '><Image className='invert-100' alt='arrow symbol' width={15} height={45} src="/open1.svg" /></span></Link>
-                                            <span onClick={() => handleDelete(item.id)} className='p-2 bg-[rgba(255,255,255,0)] border-1 border-gray-500  items-center rounded-full  opacity-40 hover:opacity-90 flex justify-center  cursor-pointer hover:text-gray-300 '><Image className='invert-100' alt='delete symbol' width={15} height={35} src="/delete.svg" /></span>
+                                            <div onClick={() => { copyText(`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`) }} className='p-2 bg-[rgba(255,255,255,0)] border-1 border-gray-500  items-center rounded-full  opacity-40 hover:opacity-90 flex justify-center  cursor-pointer hover:text-gray-300 transition-all duration-300 active:scale-200'><Image className='invert-100' alt='copy symbol' width={15} height={35} src="/copy.svg" /></div>
+                                            <Link target='_blank' href={`${process.env.NEXT_PUBLIC_HOST}/${item.shorturl}`}><span className='p-2 bg-[rgba(255,255,255,0)] border-1 border-gray-500  items-center rounded-full  opacity-40 hover:opacity-90 flex justify-center  cursor-pointer hover:text-gray-300 transition-all duration-300 active:scale-200'><Image className='invert-100' alt='arrow symbol' width={15} height={45} src="/open1.svg" /></span></Link>
+                                            <span onClick={() => handleDelete(item.shorturl)} className='p-2 bg-[rgba(255,255,255,0)] border-1 border-gray-500  items-center rounded-full  opacity-40 hover:opacity-90 flex justify-center  cursor-pointer hover:text-gray-300 transition-all duration-300 active:scale-200'><Image className='invert-100' alt='delete symbol' width={15} height={35} src="/delete.svg" /></span>
                                         </div>
                                     </td>
                                 </tr>

@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
-import { v4 as uuidv4 } from 'uuid';
 import { useForm } from 'react-hook-form'
 
 export default function Page() {
@@ -20,29 +19,13 @@ export default function Page() {
 
     const [url, seturl] = useState("")
     const [shorturl, setshorturl] = useState("")
-    const [id, setid] = useState("")
-
     const [generated, setgenerated] = useState("")
-
-    const [urls, seturls] = useState([])
+    const userkey=localStorage.getItem("userkey")
 
     useEffect(() => {
         document.title = "Generate Links : SnapLink"
-        let urlsnumber = localStorage.getItem("snaplink");
-        if (urlsnumber != null) {
-            let urls = JSON.parse(localStorage.getItem("snaplink"))
-            seturls(urls)
-        }
     }, [])
 
-    useEffect(() => {
-        setid(`${uuidv4()}`)
-    }, [url])
-
-
-    const saveToLocal = () => {
-        localStorage.setItem("snaplink", JSON.stringify(urls))
-    }
 
     const delay = (d) => {
         return new Promise((resolve, reject) => {
@@ -60,9 +43,9 @@ export default function Page() {
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
+            "userkey":userkey,
             "url": url,
-            "shorturl": shorturl,
-            "id": id
+            "shorturl": shorturl, 
         });
 
         const requestOptions = {
@@ -75,14 +58,11 @@ export default function Page() {
         fetch("/api/generate", requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                console.log(result)
-                // alert(result.message)
                 if (result.success === true) {
                     setgenerated(`${process.env.NEXT_PUBLIC_HOST}${shorturl}`)
                     seturl("")
                     setshorturl("")
-                    seturls([...urls, { "url": url, "shorturl": shorturl, "id": id }])
-                    localStorage.setItem("snaplink", JSON.stringify([...urls, { "url": url, "shorturl": shorturl, "id": id }]))
+                    localStorage.setItem("userkey",result.userkey)
                     toast.success(result.message, {
                         position: "top-right",
                         autoClose: 5000,
@@ -153,7 +133,7 @@ export default function Page() {
                         {errors.shortUrl && <div className='message text-[12px] text-red-400 m-1'> {errors.shortUrl.message}</div>}
                     </div>
 
-                    <button type='submit' className='p-1 px-5 w-full my-6 mt-8 bg-[rgba(137,36,102,0.79)] hover:bg-[rgb(137,36,102)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed' disabled={isSubmitting}>Generate</button>
+                    <button type='submit' className='p-1 px-5 w-full my-6 mt-8 bg-[rgba(137,36,102,0.79)] hover:bg-[rgb(137,36,102)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed transition-all duration-300 active:scale-110' disabled={isSubmitting}>Generate</button>
                 </form>
             </div>
                  {isSubmitting && <div className='text-center flex flex-col gap-2 items-center mt-5'> Generating... <img src="/loader.gif" className='mix-blend-lighten invert-100 w-8' alt="" /></div>}
@@ -167,11 +147,8 @@ export default function Page() {
             </div>
             }
 
-            <Link href='/shorten/links' className=" border-2 mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white"><button className='flex gap-2  items-center cursor-pointer' >Your recent Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
+            <Link href='/shorten/links' className=" border-2 mt-5 text-gray-400 border-gray-700 bg-[rgba(255,255,255,0)] p-1 px-4 w-fit rounded-full cursor-pointer hover:bg-[rgba(255,255,255,0.04)] hover:text-white hover:shadow-lg shadow-gray-600 transition-all duration-300 active:scale-110"><button className='flex gap-2  items-center cursor-pointer' >Your recent Links <Image alt='link symbol' className='mix-blend-lighten invert-100' width={18} height={18} src="/link.png" /></button></Link>
 
         </div>
     )
 }
-
-// export default page
-

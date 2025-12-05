@@ -9,7 +9,7 @@ const Footer = () => {
             <div className='flex md:flex-row flex-col gap-5 md:gap-0'>
                 <div>
                     <h1 className='md:px-20 text-gray-400 font-bold'>Important Links</h1>
-                    <ul className='flex flex-col gap-1 md:mt-3 mt-2  p-1 md:px-20 rounded-full text-gray-500 md:text-[15px] text-[14px]'>
+                    <ul className='flex flex-col gap-1 md:mt-3 mt-2  p-1 md:px-20 rounded-full text-gray-500 md:text-[14px] text-[13px]'>
                         <Link className='w-fit' href='/'><li className='hover:text-gray-400 ' >Home</li></Link>
                         <Link className='w-fit' href='/about'><li className='hover:text-gray-400 ' >About</li></Link>
                         <Link className='w-fit' href='/contact'><li className='hover:text-gray-400 '>Contact us</li></Link>
@@ -19,7 +19,7 @@ const Footer = () => {
 
                     </ul>
                 </div>
-                <div className='text-gray-500 md:text-[15px] text-[13px]'>
+                <div className='text-gray-500 md:text-[14px] text-[13px]'>
                     <h1 className=' text-gray-400 font-bold text-base'>Contact</h1>
                     <p className='mt-3 flex gap-3'><Image alt='email symbol' className='invert-50' width={15} height={15} src="/emailsvg.svg" /> vivekkumarsoni7646@gmail.com</p>
                     <p className='mt-1 flex gap-3'><Image alt='github symbol' className='invert-50' width={18} height={1} src="/github.svg" />vivek-code-200</p>

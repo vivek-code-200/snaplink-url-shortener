@@ -139,7 +139,7 @@ const Page = () => {
 
                         </div>
 
-                        <button id='send' type='submit' className={`${isSubmitting ? "hidden" : ""} disabled:bg-[rgb(110,29,96)] w-full text-center text-white p-2 hover:bg-[rgb(137,36,92)]  cursor-pointer bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed`} disabled={isSubmitting}>Send your request</button>
+                        <button id='send' type='submit' className={`${isSubmitting ? "hidden" : ""} disabled:bg-[rgb(110,29,96)] w-full text-center text-white p-2 hover:bg-[rgb(137,36,92)]  cursor-pointer bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed transition-all duration-300 active:scale-105`} disabled={isSubmitting}>Send your request</button>
 
                         {isSubmitting && <button id='send' type='submit' className=' w-full flex items-center justify-center gap-1 text-center text-white p-2  bg-[rgba(137,36,92,0.85)] cursor-not-allowed'>Sending <img src="/loader.gif" className='invert-100 mix-blend-lighten w-5 pt-2 ' alt="" /></button>}
                     </div>
