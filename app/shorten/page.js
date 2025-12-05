@@ -20,7 +20,7 @@ export default function Page() {
     const [url, seturl] = useState("")
     const [shorturl, setshorturl] = useState("")
     const [generated, setgenerated] = useState("")
-    const userkey=localStorage.getItem("userkey")
+
 
     useEffect(() => {
         document.title = "Generate Links : SnapLink"
@@ -38,14 +38,14 @@ export default function Page() {
     const generate = async () => {
 
         await delay(3)
-
+        const userkey = localStorage.getItem("userkey")
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
-            "userkey":userkey,
+            "userkey": userkey,
             "url": url,
-            "shorturl": shorturl, 
+            "shorturl": shorturl,
         });
 
         const requestOptions = {
@@ -62,7 +62,7 @@ export default function Page() {
                     setgenerated(`${process.env.NEXT_PUBLIC_HOST}${shorturl}`)
                     seturl("")
                     setshorturl("")
-                    localStorage.setItem("userkey",result.userkey)
+                    localStorage.setItem("userkey", result.userkey)
                     toast.success(result.message, {
                         position: "top-right",
                         autoClose: 5000,
@@ -136,7 +136,7 @@ export default function Page() {
                     <button type='submit' className='p-1 px-5 w-full my-6 mt-8 bg-[rgba(137,36,102,0.79)] hover:bg-[rgb(137,36,102)] cursor-pointer disabled:bg-[rgba(137,36,92,0.85)] disabled:cursor-not-allowed transition-all duration-300 active:scale-110' disabled={isSubmitting}>Generate</button>
                 </form>
             </div>
-                 {isSubmitting && <div className='text-center flex flex-col gap-2 items-center mt-5'> Generating... <img src="/loader.gif" className='mix-blend-lighten invert-100 w-8' alt="" /></div>}
+            {isSubmitting && <div className='text-center flex flex-col gap-2 items-center mt-5'> Generating... <img src="/loader.gif" className='mix-blend-lighten invert-100 w-8' alt="" /></div>}
 
             {isSubmitSuccessful && generated && <div className='mt-5 text-center'>
                 <div className='text-gray-500 '>Your Link is Generated 👇 !!!</div>
